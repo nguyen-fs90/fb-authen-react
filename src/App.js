@@ -1,11 +1,18 @@
+import {useState} from 'react';
+
+import Home from './pages/home/Home';
+import Login from './pages/login/Login';
 import './App.css';
 
 const App = () => {
-  return (
-    <div>
-      <h1>hello world</h1>
-    </div>
-  );
+  const [isAuth, setAuth] = useState(false);
+  const [user, setUser] = useState('');
+
+  if (isAuth) {
+    return <Home authFunc={setAuth} user={user} />;
+  } else {
+    return <Login authFunc={setAuth} userFunc={setUser} />;
+  }
 };
 
 export default App;
