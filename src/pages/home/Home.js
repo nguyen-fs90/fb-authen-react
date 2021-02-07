@@ -1,14 +1,15 @@
 import './Home.css';
 
-const Home = ({ authFunc, user }) => {
-  const handleClick = (event) => {
-    authFunc(false);
+const Home = ({ setAuth }) => {
+
+  const logout = (e) => {
+    setAuth(false);
   }
+
   return (
     <div>
       <h1>Home Page</h1>
-      <h2>hello {user}</h2>
-      <button type="button" onClick={handleClick}>logout</button>
+      <button className="btn" type="button" onClick={logout}>logout</button>
     </div>
   );
 };

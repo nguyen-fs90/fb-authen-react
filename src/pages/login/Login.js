@@ -1,38 +1,46 @@
 /* eslint-disable no-undef */
 import {useState} from 'react';
-
 import './Login.css';
 
-const Login = ({ authFunc, userFunc }) => {
-  const [name, setName] = useState('');
+const Login = ({setAuth}) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [require, setRequire] = useState('');
 
-  const handleSubmit = (e) => {
-    if (name === '') {
-      setRequire('name is require !');
+  const onSubmit = (e) => {
+    if (username === '' || password === '') {
+      setRequire('username, password is require !');
     } else {
-      authFunc(true);
-      userFunc(name);
+      setAuth(true);
     }
   };
 
-  const handleChange = (e) => {
-    setName(e.target.value);
+  const onChangeName = (e) => {
+    setUsername(e.target.value);
     setRequire('');
   };
 
+  const onChangePassword = (e) => {
+    setPassword(e.target.value);
+    setRequire('');
+  }
+
   return (
     <div className="login-form">
-      <h1>Login Page</h1>
+      <h3>Welcome !</h3>
       <form>
-        <label>
-          Name:
-          <input type="text" value={name} onChange={handleChange} />
+        <label className="form-label">
+          User Name:
+          <input className="form-input" type="text" value={username} onChange={onChangeName} />
         </label>
-        <button type="button" onClick={handleSubmit}>login</button>
+        <label className="form-label">
+          Password:
+          <input className="form-input" type="password" value={password} onChange={onChangePassword} />
+        </label>
+        <p className="require-mess">{require}</p>
+        <br/>
+        <button className="btn" type="button" onClick={onSubmit}>login</button>
       </form>
-      <p>{name}</p>
-      <p style={{color: "#DC143C"}}>{require}</p>
     </div>
   );
 };

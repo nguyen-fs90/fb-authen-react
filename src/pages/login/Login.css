@@ -1,0 +1,26 @@
+.login-form {
+  height: 300px;
+  width: 300px;
+  margin: auto;
+  border: 1px;
+  border-style: solid;
+  padding-left: 20px;
+  margin-top: 30px;
+  border-radius: 5px;
+}
+
+.require-mess {
+  color: red;
+}
+
+.form-label {
+  font-size: small;
+  display: block;
+  margin-top: 10px;
+}
+
+.form-input {
+  display: block;
+  margin-top: 5px;
+  width: 200px;
+}
