@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import {useState} from 'react';
+import firebase from '../../Firebase';
 import './Login.css';
 
 const Login = ({setAuth}) => {
@@ -11,7 +12,14 @@ const Login = ({setAuth}) => {
     if (username === '' || password === '') {
       setRequire('username, password is require !');
     } else {
-      setAuth(true);
+      firebase.auth().signInWithEmailAndPassword(username, password)
+      .then((user) => {
+        console.log('user=', user);
+        setAuth(true);
+      })
+      .catch((error) => {
+        alert(error.message)
+      });
     }
   };
 

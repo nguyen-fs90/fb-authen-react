@@ -1,9 +1,17 @@
 import './Home.css';
+import firebase from '../../Firebase';
 
 const Home = ({ setAuth }) => {
 
   const logout = (e) => {
-    setAuth(false);
+    firebase.auth().signOut().then(() => {
+      // Sign-out successful.
+      setAuth(false);
+    }).catch((error) => {
+      // An error happened.
+      alert(error.message)
+    });
+    
   }
 
   return (
